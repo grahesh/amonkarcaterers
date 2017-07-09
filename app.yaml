@@ -1,0 +1,57 @@
+application: amonkarcaterers-1125
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+
+- url: /css
+  static_dir: css
+  mime_type: "text/css"
+
+- url: /fonts
+  static_dir: fonts
+
+- url: /images
+  static_dir: images 
+  mime_type: "image/jpeg/svg/png"
+
+- url: /js
+  static_dir: js 
+  mime_type: "application/javascript"
+
+- url: /fonts/(.*\.woff)
+  static_files: fonts/\1
+  upload: fonts/(.*\.woff)
+  mime_type: application/font-woff
+
+- url: /fonts/(.*\.svg)
+  static_files: fonts/\1
+  upload: fonts/(.*\.svg)
+  mime_type: image/svg+xml
+
+- url: /fonts/(.*\.eot)
+  static_files: fonts/\1
+  upload: fonts/(.*\.eot)
+  mime_type: application/vnd.ms-fontobject
+
+- url: /fonts/(.*\.ttf)
+  static_files: fonts/\1
+  upload: fonts/(.*\.ttf)
+  mime_type: application/x-font-ttf
+
+- url: /fonts/(.*\.otf)
+  static_files: fonts/\1
+  upload: fonts/(.*\.otf)
+  mime_type: application/x-font-otf
+
+- url: /email
+  script: email.py
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt 
+
+- url: .*
+  script: main.py
